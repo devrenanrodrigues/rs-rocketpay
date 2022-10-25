@@ -78,7 +78,7 @@ const cardNumberPattern = {
     {
       mask: "0000 0000 0000 0000",
       regex: /^62\d{0,14}/,
-      cardtype: "hipercard"
+      cardtype: "hipercard",
     },
     {
       mask: "0000 0000 0000 0000",
@@ -122,6 +122,8 @@ function updateSecurityCode(code) {
 }
 
 cardNumberMasked.on("accept", () => {
+  const cardType = cardNumberMasked.masked.currentMask.cardtype
+  setCardType(cardType)
   updateCardNumber(cardNumberMasked.value)
 })
 
